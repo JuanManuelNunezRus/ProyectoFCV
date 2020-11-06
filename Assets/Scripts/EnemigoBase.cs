@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemigoBase
 {
     public string nombre;
+    public int nivel;
     
     public int fuerza;
     public int defensa;
