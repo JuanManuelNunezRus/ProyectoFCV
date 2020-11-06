@@ -1,0 +1,21 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
+public class EnemigoBase
+{
+    public string nombre;
+    
+    public int fuerza;
+    public int defensa;
+    public int intelecto;
+    public int espiritu;
+    public int suerte;
+    public int agilidad;
+
+    public int vidaBase;
+    public int vidaActual;
+    public int manaBase;
+    public int manaActual;
+}
