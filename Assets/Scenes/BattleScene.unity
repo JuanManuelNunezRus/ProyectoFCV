@@ -153,8 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f9abde5ac5dfe4c973e45820b9855c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BSM: {fileID: 856779233}
   enemigo:
-    nombre: 
+    nombre: Enemigo
     nivel: 0
     fuerza: 0
     defensa: 0
@@ -167,6 +168,7 @@ MonoBehaviour:
     manaBase: 0
     manaActual: 0
   estadoTurno: 0
+  objetoObjetivo: {fileID: 0}
 --- !u!65 &127709855
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -827,7 +829,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -122.4, y: 60.8}
+  m_AnchoredPosition: {x: -126, y: 60.8}
   m_SizeDelta: {x: -276.47156, y: 322.67685}
   m_Pivot: {x: 0.49999997, y: 0.49999997}
 --- !u!114 &832486508
@@ -900,7 +902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   protagonista:
-    nombre: 
+    nombre: Prota
     nivel: 0
     experiencia: 0
     fuerza: 0
@@ -983,7 +985,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849433024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.19, y: 0.46, z: 3.43}
+  m_LocalPosition: {x: 1.19, y: 0.46, z: 3.86}
   m_LocalScale: {x: 1.3135, y: 1.3135, z: 1.3135}
   m_Children: []
   m_Father: {fileID: 0}
@@ -998,6 +1000,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 856779232}
+  - component: {fileID: 856779233}
   m_Layer: 0
   m_Name: BattleManager
   m_TagString: Untagged
@@ -1019,6 +1022,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &856779233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856779231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54164c1a3f4746a4ab47c578782dbb31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleState: 0
+  listaTurnos: []
+  aliados: []
+  enemigos: []
 --- !u!1 &977990051
 GameObject:
   m_ObjectHideFlags: 0
