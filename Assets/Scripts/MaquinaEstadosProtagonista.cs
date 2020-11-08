@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class MaquinaEstadosProtagonista : MonoBehaviour
 {
+    public BattleStateMachine BSM;
     public ProtagonistaBase protagonista;
 
     public enum Turno {
         CARGANDO, 
         ADDTOLIST,
         ESPERANDO,
-        ELIGIENDO,
         ACTUANDO,
         MUERTO
     }
@@ -25,6 +25,7 @@ public class MaquinaEstadosProtagonista : MonoBehaviour
     void Start()
     {
         estadoTurno = Turno.CARGANDO;
+        BSM = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
     }
 
     void Update()
@@ -35,12 +36,10 @@ public class MaquinaEstadosProtagonista : MonoBehaviour
                 ActualizarBarraTurno();
                 break;
             case (Turno.ADDTOLIST):
-
+                BSM.aliadosPreparados.Add(this.gameObject);
+                estadoTurno = Turno.ESPERANDO;
                 break;
             case (Turno.ESPERANDO):
-
-                break;
-            case (Turno.ELIGIENDO):
 
                 break;
             case (Turno.ACTUANDO):

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleStateMachine : MonoBehaviour
 {
@@ -13,8 +14,25 @@ public class BattleStateMachine : MonoBehaviour
     public PerformAction battleState;
 
     public List<TurnHandler> listaTurnos = new List<TurnHandler>();
+
     public List<GameObject> aliados = new List<GameObject>();
     public List<GameObject> enemigos = new List<GameObject>();
+
+    public enum HeroeGUI
+    {
+        ACTIVAR,
+        ESPERAR,
+        ACCION,
+        ENEMIGO,
+        DONE
+    }
+
+    public HeroeGUI inputHeroe;
+    public List<GameObject> aliadosPreparados = new List<GameObject>();
+    private TurnHandler eleccionHeroe;
+
+    public GameObject botonEnemigo;
+    public Transform spacer;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +40,7 @@ public class BattleStateMachine : MonoBehaviour
         battleState = PerformAction.ESPERANDO;
         aliados.AddRange(GameObject.FindGameObjectsWithTag("Aliado"));
         enemigos.AddRange(GameObject.FindGameObjectsWithTag("Enemigo"));
+        BotonesEnemigos();
     }
 
     // Update is called once per frame
@@ -58,5 +77,22 @@ public class BattleStateMachine : MonoBehaviour
     public void RecibirAcciones(TurnHandler input)
     {
         listaTurnos.Add(input);
+    }
+
+    void BotonesEnemigos()
+    {
+        foreach (GameObject enemigo in enemigos)
+        {
+            GameObject nuevoBoton = Instantiate(botonEnemigo) as GameObject;
+            BotonSeleccionEnemigo boton = nuevoBoton.GetComponent<BotonSeleccionEnemigo>();
+
+            MaquinaEstadosEnemigo enemigoActual = enemigo.GetComponent<MaquinaEstadosEnemigo>();
+            Text texto = nuevoBoton.GetComponentInChildren<Text>();
+            texto.text = enemigoActual.enemigo.nombre;
+
+            boton.enemigoPrefab = enemigo;
+
+            nuevoBoton.transform.SetParent(spacer, false);
+        }
     }
 }
