@@ -34,12 +34,20 @@ public class BattleStateMachine : MonoBehaviour
     public GameObject botonEnemigo;
     public Transform spacer;
 
+    public GameObject panelAtaque;
+    public GameObject panelEnemigos;
+
+
     // Start is called before the first frame update
     void Start()
     {
         battleState = PerformAction.ESPERANDO;
         aliados.AddRange(GameObject.FindGameObjectsWithTag("Aliado"));
         enemigos.AddRange(GameObject.FindGameObjectsWithTag("Enemigo"));
+        inputHeroe = HeroeGUI.ACTIVAR;
+
+        panelAtaque.SetActive(false);
+        panelEnemigos.SetActive(false);
         BotonesEnemigos();
     }
 
@@ -70,6 +78,22 @@ public class BattleStateMachine : MonoBehaviour
                 break;
             case (PerformAction.ACTUAR):
                 
+                break;
+        }
+
+        switch (inputHeroe)
+        {
+            case (HeroeGUI.ACTIVAR):
+                if (aliadosPreparados.Count > 0)
+                {
+                    aliadosPreparados[0].transform.Find("Selector").gameObject.SetActive(true);
+                    panelAtaque.SetActive(true);
+                    inputHeroe = HeroeGUI.ESPERAR;
+                }
+                break;
+            case (HeroeGUI.ESPERAR):
+                break;
+            case (HeroeGUI.DONE):
                 break;
         }
     }

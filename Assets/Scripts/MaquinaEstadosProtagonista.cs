@@ -21,10 +21,12 @@ public class MaquinaEstadosProtagonista : MonoBehaviour
     private float barraActual = 0f;
     private float barraMax = 5f;
     public Image barraAtaque;
+    public GameObject selector;
 
     void Start()
     {
         estadoTurno = Turno.CARGANDO;
+        selector.SetActive(false);
         BSM = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
     }
 
